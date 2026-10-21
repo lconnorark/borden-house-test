@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borden House</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header id="page-header">Borden House</header>
+
+  <div id="floor-toggle" aria-label="Choose a floor">
+    <button type="button" data-floor="downstairs" class="floor-btn active">Downstairs</button>
+    <button type="button" data-floor="upstairs" class="floor-btn">Upstairs</button>
+  </div>
+
+  <div id="overlay"></div>
+
+  <div id="svg-container-downstairs" class="svg-container">
+    <svg id="floor-downstairs" viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="floorboards" width="20" height="20" patternUnits="userSpaceOnUse">
+          <rect width="20" height="20" fill="#f5ede1" />
+          <line x1="0" y1="0" x2="20" y2="0" stroke="#d0c4b5" stroke-width="2" />
+        </pattern>
+      </defs>
+
+      <rect x="0" y="0" width="1000" height="650" fill="white" />
+      <rect x="350" y="500" width="300" height="120" fill="#e8d9b5" stroke="#333" stroke-width="2" />
+      <text x="500" y="565" text-anchor="middle" font-size="22">Front Porch</text>
+      <circle class="hotspot" cx="500" cy="560" r="14" data-hotspot="porch" />
+
+      <rect x="50" y="200" width="300" height="300" fill="url(#floorboards)" stroke="#333" stroke-width="3" />
+      <text x="200" y="230" text-anchor="middle" font-size="22">Left Room</text>
+      <circle class="hotspot" cx="200" cy="350" r="12" data-hotspot="downLeft" />
+
+      <rect x="350" y="200" width="300" height="300" fill="#e6f2d9" stroke="#333" stroke-width="3" />
+      <text x="500" y="350" text-anchor="middle" font-size="22">Breezeway</text>
+      <circle class="hotspot" cx="500" cy="350" r="12" data-hotspot="downBreeze" />
+
+      <rect x="650" y="200" width="300" height="300" fill="url(#floorboards)" stroke="#333" stroke-width="3" />
+      <text x="800" y="230" text-anchor="middle" font-size="22">Right Room</text>
+      <circle class="hotspot" cx="800" cy="350" r="12" data-hotspot="downRight" />
+
+      <path d="M350 310 A40 40 0 0 1 390 350" fill="none" stroke="#555" stroke-width="3" />
+      <path d="M650 310 A40 40 0 0 0 610 350" fill="none" stroke="#555" stroke-width="3" />
+    </svg>
+  </div>
+
+  <div id="svg-container-upstairs" class="svg-container" style="display: none;">
+    <svg id="floor-upstairs" viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="upstairs-floorboards" width="20" height="20" patternUnits="userSpaceOnUse">
+          <rect width="20" height="20" fill="#f5ede1" />
+          <line x1="0" y1="0" x2="20" y2="0" stroke="#d0c4b5" stroke-width="2" />
+        </pattern>
+      </defs>
+
+      <rect x="0" y="0" width="1000" height="650" fill="white" />
+      <rect x="50" y="200" width="300" height="300" fill="url(#upstairs-floorboards)" stroke="#333" stroke-width="3" />
+      <text x="200" y="230" text-anchor="middle" font-size="22">Left Room</text>
+      <circle class="hotspot" cx="200" cy="350" r="12" data-hotspot="upLeft" />
+
+      <rect x="350" y="200" width="300" height="300" fill="#e6f2d9" stroke="#333" stroke-width="3" />
+      <text x="500" y="350" text-anchor="middle" font-size="22">Breezeway</text>
+      <circle class="hotspot" cx="500" cy="350" r="12" data-hotspot="upBreeze" />
+
+      <rect x="650" y="200" width="300" height="300" fill="url(#upstairs-floorboards)" stroke="#333" stroke-width="3" />
+      <text x="800" y="230" text-anchor="middle" font-size="22">Right Room</text>
+      <circle class="hotspot" cx="800" cy="350" r="12" data-hotspot="upRight" />
+
+      <path d="M350 310 A40 40 0 0 1 390 350" fill="none" stroke="#555" stroke-width="3" />
+      <path d="M650 310 A40 40 0 0 0 610 350" fill="none" stroke="#555" stroke-width="3" />
+    </svg>
+  </div>
+
+  <div id="info-panel" class="panel" aria-live="polite">
+    <h2 id="info-title">Select an area</h2>
+    <img id="info-image" alt="" />
+    <p id="info-text"></p>
+    <div id="timeline-container"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
