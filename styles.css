@@ -1,0 +1,223 @@
+* {
+    box-sizing: border-box;
+}
+
+/* ========================= */
+/* PAGE HEADER               */
+/* ========================= */
+#page-header {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    background: #d7c8b8;
+    color: #4a3b28;
+    font-size: 28px;
+    font-weight: bold;
+    border-bottom: 2px solid #b8a894;
+}
+
+/* ========================= */
+/* FLOOR TOGGLE BUTTONS      */
+/* ========================= */
+#floor-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 0;
+    background: #f2ede6;
+    border-bottom: 2px solid #d2c7b8;
+}
+
+.floor-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #d6c7b7;
+    border: 2px solid #a8957f;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.floor-btn.active {
+    background: #bfa88f;
+    font-weight: bold;
+}
+
+.floor-btn:hover {
+    background: #c9b7a0;
+}
+
+/* ========================= */
+/* GLOBAL LAYOUT             */
+/* ========================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f1ea;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.svg-container {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+}
+
+/* SVG scaling */
+svg {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+}
+
+/* ========================= */
+/* SLIDING INFO PANEL        */
+/* ========================= */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.panel {
+    width: 320px;
+    background: #fffdf8;
+    border-left: 2px solid #c9bda8;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+}
+
+.panel.open {
+    transform: translateX(0);
+}
+
+/* Panel text */
+#info-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #5c4632;
+}
+
+#info-text {
+    margin-top: 10px;
+    color: #4a4035;
+    line-height: 1.5;
+}
+
+#info-image {
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 10px;
+    display: none;
+}
+
+/* ========================= */
+/* HOTSPOTS                  */
+/* ========================= */
+.hotspot {
+    fill: #ffc870;
+    stroke: #d98324;
+    stroke-width: 3;
+    opacity: 0.9;
+    cursor: pointer;
+    filter: drop-shadow(0 0 6px #d98324);
+    transition: opacity 0.25s, r 0.25s;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { r: 12; opacity: 0.75; }
+    50% { r: 18; opacity: 1; }
+    100% { r: 12; opacity: 0.75; }
+}
+
+/* ========================= */
+/* TIMELINE                  */
+/* ========================= */
+.timeline {
+    padding-left: 12px;
+    border-left: 3px solid #7b6a58;
+    margin-top: 20px;
+}
+
+.timeline-entry {
+    margin-bottom: 15px;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #5c4632;
+}
+
+.timeline-description {
+    margin-left: 6px;
+    color: #4a4035;
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE         */
+/* ========================= */
+@media (max-width: 768px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    #page-header {
+        font-size: 24px;
+    }
+
+    #floor-toggle {
+        padding: 8px 0;
+    }
+
+    .panel {
+        width: 100%;
+        height: 45vh;
+        border-left: none;
+        border-top: 2px solid #c9bda8;
+        transform: translateY(100%);
+        right: 0;
+        left: 0;
+        top: auto;
+    }
+
+    .panel.open {
+        transform: translateY(0);
+    }
+
+    .hotspot {
+        r: 22 !important;
+        stroke-width: 4;
+        filter: drop-shadow(0 0 10px #d98324);
+    }
+
+    @keyframes pulse {
+        0% { r: 20; opacity: 0.7; }
+        50% { r: 26; opacity: 1; }
+        100% { r: 20; opacity: 0.7; }
+    }
+}
